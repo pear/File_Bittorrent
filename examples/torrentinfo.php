@@ -68,7 +68,7 @@
             $n_length = strlen($files_n);
             echo '(' . $files_n . ")\n";
             foreach ($val as $file) {
-                echo str_repeat(' ', 20) . '' . str_pad($n, $n_length, ' ', PAD_LEFT) . ': ' . $file['filename'] . "\n";
+                echo str_repeat(' ', 20) . '' . str_pad($n, $n_length, ' ', STR_PAD_LEFT) . ': ' . $file['filename'] . "\n";
                 $n++;
             }
             break;
