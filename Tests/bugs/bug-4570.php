@@ -15,7 +15,6 @@ require_once '../File/Bittorrent/Encode.php';
 require_once '../File/Bittorrent/Decode.php';
 $decoder = new File_Bittorrent_Decode;
 $encoder = new File_Bittorrent_Encode;
-error_reporting(E_ALL);
 
 $data = array(
         'broken' => null,
