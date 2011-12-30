@@ -33,9 +33,9 @@
 
     ini_set('display_errors', 1);
 
-    require_once 'Tests/FileBittorrent.php';
-    require_once 'Tests/Bug7406.php';
-    require_once 'Tests/Bug8085.php';
+    require_once 'tests/FileBittorrentTest.php';
+    require_once 'tests/Bug7406Test.php';
+    require_once 'tests/Bug8085Test.php';
 
     /**
     * Test for File_Bittorrent

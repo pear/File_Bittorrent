@@ -45,12 +45,14 @@
     * @author Robin H. Johnson <robbat2@gentoo.org>
     * @version $Id$
     */
-    class Tests_FileBittorrent extends PHPUnit_Framework_TestCase
+    class FileBittorrentTest extends PHPUnit_Framework_TestCase
     {
         public static $torrent = './install-x86-universal-2005.0.iso.torrent';
 
         public function testInfoHash()
         {
+            exec('which torrentinfo-console', $out, $code);
+            if ($code !== 0) $this->markTestSkipped();
             $File_Bittorrent_Decode = new File_Bittorrent_Decode;
             $File_Bittorrent_Decode->decodeFile(self::$torrent);
             exec('torrentinfo-console ' . escapeshellarg(self::$torrent), $bt);

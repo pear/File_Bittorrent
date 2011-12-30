@@ -1,7 +1,7 @@
 <?php
 
 // +----------------------------------------------------------------------+
-// | MakeTorrent and Encode data in Bittorrent format                          |
+// | Decode and Encode data in Bittorrent format                          |
 // +----------------------------------------------------------------------+
 // | Copyright (C) 2004-2005 Markus Tacker <m@tacker.org>                 |
 // +----------------------------------------------------------------------+
@@ -22,9 +22,9 @@
 // +----------------------------------------------------------------------+
 
     /**
-    * Test for Bug #7406
+    * Test for Bug #8085
     *
-    * @link http://pear.php.net/bugs/bug.php?id=7406
+    * @link http://pear.php.net/bugs/bug.php?id=8085
     * @package File_Bittorrent
     * @subpackage Test
     * @category File
@@ -33,49 +33,38 @@
     */
 
     require_once 'PHPUnit/Framework/TestCase.php';
-    require_once 'File/Bittorrent/MakeTorrent.php';
     require_once 'File/Bittorrent/Decode.php';
 
     /**
-    * Test for Bug #7406
+    * Test for Bug #8085
     *
-    * @link http://pear.php.net/bugs/bug.php?id=7406
+    * @link http://pear.php.net/bugs/bug.php?id=8085
     * @package File_Bittorrent
     * @subpackage Test
     * @category File
     * @author Markus Tacker <m@tacker.org>
     * @version $Id$
     */
-    class Tests_Bug7406 extends PHPUnit_Framework_TestCase
+    class Bug8085Test extends PHPUnit_Framework_TestCase
     {
-        public static $torrent = './bugs/bug-7406/TestDir';
+        public static $torrent = './tests/bugs/bug-8085/multiple_tracker.torrent';
 
         public function testAnnounceList()
         {
-            $MakeTorrent = new File_Bittorrent_MakeTorrent(self::$torrent);
-            // Set the announce URL
-            $MakeTorrent->setAnnounce('http://www.example.org');
-            // Set the comment
-            $MakeTorrent->setComment('Hello World!');
-            // Set the piece length (in KB)
-            $MakeTorrent->setPieceLength(256);
-            // Build the torrent
-            $metainfo = $MakeTorrent->buildTorrent();
-
-            $Decode = new File_Bittorrent_Decode();
-            $info = $Decode->decode($metainfo);
-            $this->assertEquals(count($info['info']['files']), 3);
-            $files = array();
-            foreach ($info['info']['files'] as $k => $v) {
-                $files[] = $v['path'][0];
-            }
-            sort($files);
+            $Decode = new File_Bittorrent_Decode;
+            $info = $Decode->decodeFile(self::$torrent);
             $expected = array (
-                '1.txt',
-                '2.txt',
-                '3.txt',
+                array (
+                    'http://tracker.gotwoot.net:6968/announce',
+                ),
+                array (
+                    'http://www.point-blank.cc:6969/announce',
+                    'http://www.point-blank.cc:7000/announce',
+                    'http://www.point-blank.cc:7001/announce',
+                ),
             );
-            $this->assertEquals($expected, $files);
+            $this->assertEquals($expected, $info['announce_list']);
+            unset($Decode);
         }
     }
 
