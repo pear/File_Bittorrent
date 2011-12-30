@@ -46,16 +46,19 @@ http://pear.php.net/dtd/package-2.0.xsd">
                     <file name="MakeTorrent.php" role="php" />
                 </dir>
             </dir>
-            <file name="example.php" role="doc" />
-            <file name="example_mktorrent.php" role="doc" />
-            <file name="install-x86-universal-2005.0.iso.torrent" role="doc" />
-            <file name="scrape.php" role="doc" />
-            <file name="torrentinfo.php" role="doc" />
-            <dir name="Tests">
+            <dir name="examples">
+                <file name="example.php" role="doc" />
+                <file name="example_mktorrent.php" role="doc" />
+                <file name="torrentinfo.php" role="doc" />
+                <file name="infohash.php" role="doc" />
+                <file name="scrape.php" role="doc" />
+                <file name="install-x86-universal-2005.0.iso.torrent" role="doc" />
+            </dir>
+            <dir name="tests">
                 <file name="AllTests.php" role="test" />
-                <file name="Bug7406.php" role="test" />
-                <file name="Bug8085.php" role="test" />
-                <file name="FileBittorrent.php" role="test" />
+                <file name="Bug7406Test.php" role="test" />
+                <file name="Bug8085Test.php" role="test" />
+                <file name="FileBittorrentTest.php" role="test" />
             </dir>
         </dir>
     </contents>
