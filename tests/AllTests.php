@@ -46,14 +46,14 @@
     * @author Markus Tacker <m@tacker.org>
     * @version $Id$
     */
-    class Tests_AllTests {
+    class AllTests {
 
         public static function suite() {
             $suite = new PHPUnit_Framework_TestSuite();
 
-            $suite->addTestSuite('Tests_FileBittorrent');
-            $suite->addTestSuite('Tests_Bug7406');
-            $suite->addTestSuite('Tests_Bug8085');
+            $suite->addTestSuite('FileBittorrentTest');
+            $suite->addTestSuite('Bug7406Test');
+            $suite->addTestSuite('Bug8085Test');
 
             return $suite;
         }
