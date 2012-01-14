@@ -55,7 +55,6 @@ http://pear.php.net/dtd/package-2.0.xsd">
                 <file name="install-x86-universal-2005.0.iso.torrent" role="doc" />
             </dir>
             <dir name="tests">
-                <file name="AllTests.php" role="test" />
                 <file name="Bug7406Test.php" role="test" />
                 <file name="Bug8085Test.php" role="test" />
                 <file name="FileBittorrentTest.php" role="test" />
